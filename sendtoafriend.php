@@ -36,7 +36,7 @@ class sendToAFriend extends Module
 	function __construct($dontTranslate = false)
  	{
  	 	$this->name = 'sendtoafriend';
-		$this->version = '1.6';
+		$this->version = '1.7';
 		$this->author = 'PrestaShop';
  	 	$this->tab = 'front_office_features';
 		$this->need_instance = 0;
@@ -49,7 +49,7 @@ class sendToAFriend extends Module
 			$this->displayName = $this->l('Send to a Friend module');
 			$this->description = $this->l('Allows customers to send a product link to a friend.');
  		}
-		$this->ps_versions_compliancy = array('min' => '1.5', 'max' => _PS_VERSION_);
+		$this->ps_versions_compliancy = array('min' => '1.6', 'max' => _PS_VERSION_);
 	}
 
 	public function install()
