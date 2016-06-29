@@ -57,6 +57,13 @@ if (Module::isEnabled('sendtoafriend') && Tools::getValue('action') == 'sendToMy
 		if (!$friendName || !$friendMail || !$id_product)
 			die('0');
 
+		$isValidEmail = Validate::isEmail($friendMail);
+		$isValidName  = $module->isValidName($friendName);
+
+		if (false === $isValidName || false === $isValidEmail) {
+			die('0');
+		}
+
 		/* Email generation */
 		$product = new Product((int)$id_product, false, $module->context->language->id);
 		$productLink = $module->context->link->getProductLink($product);

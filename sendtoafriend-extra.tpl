@@ -31,7 +31,7 @@ $('document').ready(function(){
 	});
 
 	$('#sendEmail').click(function(){
-        
+
         var name = $('#friend_name').val();
         var email = $('#friend_email').val();
         var id_product = $('#id_product_comment_send').val();
@@ -45,7 +45,7 @@ $('document').ready(function(){
 				dataType: "json",
 				success: function(result) {
 					$.fancybox.close();
-                    var msg = result ? "{/literal}{l s='Your e-mail has been sent successfully' mod='sendtoafriend'}{literal}" : "{/literal}{l s='Your e-mail could not be sent. Please check the e-mail address and try again.' mod='sendtoafriend'}{literal}";
+                    var msg = result ? "{/literal}{l s='Your e-mail has been sent successfully' mod='sendtoafriend'}{literal}" : "{/literal}{l s='Your e-mail could not be sent. Please check the name and e-mail address and try again.' mod='sendtoafriend'}{literal}";
                     var title = "{/literal}{l s='Send to a friend' mod='sendtoafriend'}{literal}";
                     fancyMsgBox(msg, title);
 				}
@@ -71,7 +71,7 @@ $('document').ready(function(){
 					{$stf_product->description_short}
 				</div>
 			</div>
-			
+
 			<div class="send_friend_form_content" id="send_friend_form_content">
 				<div id="send_friend_form_error"></div>
 				<div id="send_friend_form_success"></div>
