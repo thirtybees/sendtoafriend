@@ -87,4 +87,35 @@ class sendToAFriend extends Module
 			$this->context->controller->addJS($this->_path.'sendtoafriend.js');
 		}
 	}
+
+	public function isValidName($name)
+	{
+		$isName          = Validate::isName($name);
+		$isShortName     = $this->isShortName($name);
+		$isNameLikeAnUrl = $this->isNameLikeAnUrl($name);
+		$isValidName     = $isName && $isShortName && !$isNameLikeAnUrl;
+
+		return $isValidName;
+	}
+
+	public function isShortName($name)
+	{
+		$isShortName = (strlen($name) <= 50);
+
+		return $isShortName;
+	}
+
+	public function isNameLikeAnUrl($name)
+	{
+		// THIS REGEX IS NOT MEANT TO FIND A VALID URL
+		// the goal is to see if the given string for a Person Name is containing something similar to an url
+		//
+		// See all strings that i tested the regex against in https://regex101.com/r/yL7lU0/3
+		//
+		// Please fork the regex if you can improve it and make a Pull Request
+		$regex           = "/(https?:[\/]*.*)|([\.]*[[[:alnum:]]+\.[^ ]]*.*)/m";
+		$isNameLikeAnUrl = (bool) preg_match_all($regex, $name);
+
+		return $isNameLikeAnUrl;
+	}
 }
