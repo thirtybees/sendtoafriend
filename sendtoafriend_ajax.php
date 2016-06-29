@@ -30,7 +30,7 @@ include_once(dirname(__FILE__).'/sendtoafriend.php');
 
 $module = new SendToAFriend();
 
-if (Tools::getValue('action') == 'sendToMyFriend' && Tools::getValue('secure_key') == $module->secure_key)
+if (Module::isEnabled('sendtoafriend') && Tools::getValue('action') == 'sendToMyFriend' && Tools::getValue('secure_key') == $module->secure_key)
 {
 		// Retrocompatibilty with old theme
 		if($friend = Tools::getValue('friend'))
