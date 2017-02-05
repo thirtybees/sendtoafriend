@@ -24,7 +24,7 @@
 *  International Registered Trademark & Property of PrestaShop SA
 */
 
-if (!defined('_PS_VERSION_'))
+if (!defined('_TB_VERSION_'))
 	exit;
 
 class sendToAFriend extends Module
@@ -36,8 +36,8 @@ class sendToAFriend extends Module
 	function __construct($dontTranslate = false)
  	{
  	 	$this->name = 'sendtoafriend';
-		$this->version = '1.9.0';
-		$this->author = 'PrestaShop';
+		$this->version = '2.0.0';
+		$this->author = 'thirty bees';
  	 	$this->tab = 'front_office_features';
 		$this->need_instance = 0;
 		$this->secure_key = Tools::encrypt($this->name);
