@@ -1,0 +1,13 @@
+module_name: Send to a Friend
+compatible_versions: 1.0.0+
+author: thirty bees
+category: front office
+tags:
+  - refferal
+  - send to a friend
+  - advertising
+description_short: Send to a Friend module allows you put put a link to send products to customers friends.
+description: description.md
+images:
+  - image-1.png
+license: AFL
