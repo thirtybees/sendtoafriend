@@ -46,7 +46,7 @@ class sendToAFriend extends Module
 
 		if (!$dontTranslate)
 		{
-			$this->displayName = $this->l('Send to a Friend module');
+			$this->displayName = $this->l('Send to a Friend Module');
 			$this->description = $this->l('Allows customers to send a product link to a friend.');
  		}
 		$this->ps_versions_compliancy = array('min' => '1.6', 'max' => '1.6.99.99');
