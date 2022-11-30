@@ -95,7 +95,7 @@ class sendToAFriend extends Module
         $this->context->smarty->assign(array(
             'stf_product' => $product,
             'stf_product_cover' => (int)$product->id . '-' . (int)$image['id_image'],
-            'stf_secure_key' => Tools::encrypt($this->name)
+            'stf_secure_key' => $this->getSecureKey(),
         ));
 
         return $this->display(__FILE__, 'sendtoafriend-extra.tpl');
@@ -156,5 +156,13 @@ class sendToAFriend extends Module
         $isNameLikeAnUrl = (bool)preg_match_all($regex, $name);
 
         return $isNameLikeAnUrl;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSecureKey()
+    {
+        return Tools::encrypt($this->name);
     }
 }
