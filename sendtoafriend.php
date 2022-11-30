@@ -26,12 +26,28 @@
 if (!defined('_TB_VERSION_'))
     exit;
 
+/**
+ *
+ */
 class sendToAFriend extends Module
 {
+    /**
+     * @var string
+     */
     private $_html = '';
+    /**
+     * @var array
+     */
     private $_postErrors = array();
+    /**
+     * @var
+     */
     public $context;
 
+    /**
+     * @param $dontTranslate
+     * @throws PrestaShopException
+     */
     function __construct($dontTranslate = false)
     {
         $this->name = 'sendtoafriend';
@@ -52,16 +68,33 @@ class sendToAFriend extends Module
         $this->ps_versions_compliancy = array('min' => '1.6', 'max' => '1.6.99.99');
     }
 
+    /**
+     * @return bool
+     * @throws PrestaShopDatabaseException
+     * @throws PrestaShopException
+     */
     public function install()
     {
         return (parent::install() && $this->registerHook('extraLeft') && $this->registerHook('header'));
     }
 
+    /**
+     * @return bool
+     * @throws PrestaShopDatabaseException
+     * @throws PrestaShopException
+     */
     public function uninstall()
     {
         return (parent::uninstall() && $this->unregisterHook('header') && $this->unregisterHook('extraLeft'));
     }
 
+    /**
+     * @param $params
+     * @return string
+     * @throws PrestaShopDatabaseException
+     * @throws PrestaShopException
+     * @throws SmartyException
+     */
     public function hookExtraLeft($params)
     {
         /* Product informations */
@@ -78,6 +111,11 @@ class sendToAFriend extends Module
         return $this->display(__FILE__, 'sendtoafriend-extra.tpl');
     }
 
+    /**
+     * @param $params
+     * @return void
+     * @throws PrestaShopException
+     */
     public function hookHeader($params)
     {
         $this->page_name = Dispatcher::getInstance()->getController();
@@ -87,6 +125,10 @@ class sendToAFriend extends Module
         }
     }
 
+    /**
+     * @param $name
+     * @return bool
+     */
     public function isValidName($name)
     {
         $isName = Validate::isName($name);
@@ -97,6 +139,10 @@ class sendToAFriend extends Module
         return $isValidName;
     }
 
+    /**
+     * @param $name
+     * @return bool
+     */
     public function isShortName($name)
     {
         $isShortName = (strlen($name) <= 50);
@@ -104,6 +150,10 @@ class sendToAFriend extends Module
         return $isShortName;
     }
 
+    /**
+     * @param $name
+     * @return bool
+     */
     public function isNameLikeAnUrl($name)
     {
         // THIS REGEX IS NOT MEANT TO FIND A VALID URL
