@@ -32,14 +32,6 @@ if (!defined('_TB_VERSION_'))
 class sendToAFriend extends Module
 {
     /**
-     * @var string
-     */
-    private $_html = '';
-    /**
-     * @var array
-     */
-    private $_postErrors = array();
-    /**
      * @var
      */
     public $context;
