@@ -47,7 +47,6 @@ class sendToAFriend extends Module
         $this->author = 'thirty bees';
         $this->tab = 'front_office_features';
         $this->need_instance = 0;
-        $this->secure_key = Tools::encrypt($this->name);
 
         parent::__construct();
 
@@ -89,7 +88,6 @@ class sendToAFriend extends Module
      */
     public function hookExtraLeft($params)
     {
-        /* Product informations */
         $product = new Product((int)Tools::getValue('id_product'), false, $this->context->language->id);
         $image = Product::getCover((int)$product->id);
 
@@ -97,7 +95,7 @@ class sendToAFriend extends Module
         $this->context->smarty->assign(array(
             'stf_product' => $product,
             'stf_product_cover' => (int)$product->id . '-' . (int)$image['id_image'],
-            'stf_secure_key' => $this->secure_key
+            'stf_secure_key' => Tools::encrypt($this->name)
         ));
 
         return $this->display(__FILE__, 'sendtoafriend-extra.tpl');
@@ -110,8 +108,8 @@ class sendToAFriend extends Module
      */
     public function hookHeader($params)
     {
-        $this->page_name = Dispatcher::getInstance()->getController();
-        if ($this->page_name == 'product') {
+        $pageName = Dispatcher::getInstance()->getController();
+        if ($pageName == 'product') {
             $this->context->controller->addCSS($this->_path . 'sendtoafriend.css', 'all');
             $this->context->controller->addJS($this->_path . 'sendtoafriend.js');
         }
