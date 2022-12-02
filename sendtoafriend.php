@@ -90,11 +90,11 @@ class sendToAFriend extends Module
     {
         $product = new Product((int)Tools::getValue('id_product'), false, $this->context->language->id);
         $image = Product::getCover((int)$product->id);
-
+        $imageId = isset($image['id_image']) ? (int)$image['id_image'] : 0;
 
         $this->context->smarty->assign(array(
             'stf_product' => $product,
-            'stf_product_cover' => (int)$product->id . '-' . (int)$image['id_image'],
+            'stf_product_cover' => $imageId,
             'stf_secure_key' => $this->getSecureKey(),
         ));
 
