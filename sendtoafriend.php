@@ -37,10 +37,9 @@ class sendToAFriend extends Module
     public $context;
 
     /**
-     * @param $dontTranslate
      * @throws PrestaShopException
      */
-    function __construct($dontTranslate = false)
+    function __construct()
     {
         $this->name = 'sendtoafriend';
         $this->version = '2.0.3';
@@ -50,10 +49,9 @@ class sendToAFriend extends Module
 
         parent::__construct();
 
-        if (!$dontTranslate) {
-            $this->displayName = $this->l('Send to a Friend Module');
-            $this->description = $this->l('Allows customers to send a product link to a friend.');
-        }
+        $this->displayName = $this->l('Send to a Friend Module');
+        $this->description = $this->l('Allows customers to send a product link to a friend.');
+
         $this->tb_versions_compliancy = '> 1.0.0';
         $this->tb_min_version = '1.0.0';
         $this->ps_versions_compliancy = array('min' => '1.6', 'max' => '1.6.99.99');
