@@ -32,11 +32,6 @@ if (!defined('_TB_VERSION_'))
 class sendToAFriend extends Module
 {
     /**
-     * @var
-     */
-    public $context;
-
-    /**
      * @throws PrestaShopException
      */
     function __construct()
@@ -108,7 +103,7 @@ class sendToAFriend extends Module
     {
         $pageName = Dispatcher::getInstance()->getController();
         if ($pageName == 'product') {
-            $this->context->controller->addCSS($this->_path . 'sendtoafriend.css', 'all');
+            $this->context->controller->addCSS($this->_path . 'sendtoafriend.css');
             $this->context->controller->addJS($this->_path . 'sendtoafriend.js');
         }
     }
