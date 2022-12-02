@@ -36,7 +36,7 @@
 			<form method="post" action="{$request_uri}" class="std">
 				<fieldset>
 					<div class="product clearfix">
-						<a href="{$productLink}" class="img_link"><img src="{$link->getImageLink($product->link_rewrite, $cover.id_image, 'small_default')|escape:'html'}" alt="" title="{$cover.legend}" /></a>
+						<a href="{$productLink}" class="img_link"><img src="{$link->getImageLink($product->link_rewrite, $cover.id_image, 'small')|escape:'html'}" alt="" title="{$cover.legend}" /></a>
 						<a href="{$productLink}" class="product_desc"><br />{$product->name}</a>
 					</div>
 
